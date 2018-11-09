@@ -20,14 +20,14 @@ def ScatterPlot(x, y):
     a, b = np.polyfit(x, y, 1)
     plt.plot(x, a*x+b, color='red')  
     plt.scatter(x, y)  
-    plt.show()
+    #plt.show()
 
 def TracePlot(y):
     x_values = np.arange(0, 176, 1)
     plt.plot(x_values, y)
     plt.xlabel('Time')
     plt.ylabel('Sales')
-    plt.show()  
+    #plt.show()
     
 def main():
     beer = pd.read_excel('berdata1.xls', delimiter=',', skipinitialspace=True)
@@ -93,10 +93,10 @@ def main():
     variables4 = np.vstack((vol4_beer, price4_beer, promo14_beer, promo24_beer)).T
     
     #Descriptive statistics
-    print("Statistics daily returns:\n", stats.describe(variables1))
-    print("Statistics daily returns:\n", stats.describe(variables2))
-    print("Statistics daily returns:\n", stats.describe(variables3))
-    print("Statistics daily returns:\n", stats.describe(variables4))
+    print("Statistics daily returns 1:\n", stats.describe(variables1))
+    print("Statistics daily returns 2:\n", stats.describe(variables2))
+    print("Statistics daily returns 3:\n", stats.describe(variables3))
+    print("Statistics daily returns 4:\n", stats.describe(variables4))
     
     print(pd.DataFrame(variables1).corr())
     print(pd.DataFrame(variables2).corr())
