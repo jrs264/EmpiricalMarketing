@@ -88,7 +88,7 @@ def main():
     # ScatterPlot(promo23_beer, vol3_beer)
     # ScatterPlot(promo24_beer, vol4_beer)
 
-    #plt.show()
+    plt.show()
     
     #sales_frozen = np.vstack((vol1_frozen, vol2_frozen, vol3_frozen, vol4_frozen, promo11_frozen, promo12_frozen, promo13_frozen, promo14_frozen, promo21_frozen, promo22_frozen, promo23_frozen, promo24_frozen)).T
     variables1 = np.vstack((vol1_beer, price1_beer, promo11_beer, promo21_beer)).T
@@ -97,35 +97,36 @@ def main():
     variables4 = np.vstack((vol4_beer, price4_beer, promo14_beer, promo24_beer)).T
     
     #Descriptive statistics
-    # print("Statistics daily returns 1:\n", stats.describe(variables1))
-    # print("Statistics daily returns 2:\n", stats.describe(variables2))
-    # print("Statistics daily returns 3:\n", stats.describe(variables3))
-    # print("Statistics daily returns 4:\n", stats.describe(variables4))
-    #
-    # print(pd.DataFrame(variables1).corr())
-    # print(pd.DataFrame(variables2).corr())
-    # print(pd.DataFrame(variables3).corr())
-    # print(pd.DataFrame(variables4).corr())
+    print("Statistics daily returns 1:\n", stats.describe(variables1))
+    print("Statistics daily returns 2:\n", stats.describe(variables2))
+    print("Statistics daily returns 3:\n", stats.describe(variables3))
+    print("Statistics daily returns 4:\n", stats.describe(variables4))
+
+    print(pd.DataFrame(variables1).corr())
+    print(pd.DataFrame(variables2).corr())
+    print(pd.DataFrame(variables3).corr())
+    print(pd.DataFrame(variables4).corr())
     
     X1 = np.vstack((price1_beer, promo11_beer, promo21_beer)).T
     X2 = np.vstack((price2_beer, promo12_beer, promo22_beer)).T
     X3 = np.vstack((price3_beer, promo13_beer, promo23_beer)).T
     X4 = np.vstack((price4_beer, promo14_beer, promo24_beer)).T
     #
-    # OrdinaryLeastSquares(vol1_beer, X1)
-    # OrdinaryLeastSquares(vol2_beer, X2)
-    # OrdinaryLeastSquares(vol3_beer, X3)
-    # OrdinaryLeastSquares(vol4_beer, X4)
+    OrdinaryLeastSquares(vol1_beer, X1)
+    OrdinaryLeastSquares(vol2_beer, X2)
+    OrdinaryLeastSquares(vol3_beer, X3)
+    OrdinaryLeastSquares(vol4_beer, X4)
     
     X1_new = np.vstack((price1_beer, promo21_beer)).T
     X2_new = np.vstack((price2_beer, promo22_beer)).T
     X3_new = np.vstack((price3_beer, promo13_beer, promo23_beer)).T
     X4_new = np.vstack((price4_beer, promo14_beer)).T
     
-    # OrdinaryLeastSquares(vol1_beer, X1_new)
-    # OrdinaryLeastSquares(vol2_beer, X2_new)
-    # OrdinaryLeastSquares(vol3_beer, X3_new)
-    # OrdinaryLeastSquares(vol4_beer, X4_new)
+    OrdinaryLeastSquares(vol1_beer, X1_new)
+    OrdinaryLeastSquares(vol2_beer, X2_new)
+    OrdinaryLeastSquares(vol3_beer, X3_new)
+    OrdinaryLeastSquares(vol4_beer, X4_new)
+    print('end')
     
     
     #y = sales_frozen
