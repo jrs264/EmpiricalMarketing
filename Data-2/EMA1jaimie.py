@@ -1,9 +1,6 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import scipy.stats as stats
 import statsmodels.api as sm
-from pandas.core import datetools
-import numpy as np
 
 def winsorize(variables, df):
     for i in range(0,len(variables)):
@@ -19,8 +16,6 @@ def linearRainbow(res):
     testresult = sm.stats.diagnostic.linear_rainbow(res, frac=0.5)
     print('Rainbow test result:', testresult)
 
-
-
 def tests(variables, df):
     jarqueBera(variables, df)
 
@@ -31,23 +26,19 @@ def regression(array, df):
 
     linearRainbow(results)
 
-
-    fig, ax = plt.subplots(figsize=(12, 8))
-    fig = sm.graphics.plot_partregress_grid(results, fig=fig)
-
     print(results.summary())
 
 def main():
     df = []
     beer = pd.read_excel('berdata1.xls', delimiter=',', skipinitialspace=True)
+    beer2 = pd.read_excel('berdata1.xls', delimiter=',', skipinitialspace=True)
     frozenDinner = pd.read_excel('frddata1.xls', delimiter=',', skipinitialspace=True)
 
     df.append(beer)
-   # df.append(frozenDinner)
+    df.append(frozenDinner)
 
     columnValues = [['VOL1', 'PRICE1', 'PROMO11', 'PROMO21'],['VOL2', 'PRICE2', 'PROMO12', 'PROMO22'], ['VOL3', 'PRICE3', 'PROMO13', 'PROMO23'], ['VOL4', 'PRICE4', 'PROMO14', 'PROMO24'] ]
 
-    winsorize(columnValues, beer)
 
     for j in range(0, len(df)):
         print('--------------NEW DATAFRAME--------------')
@@ -55,7 +46,6 @@ def main():
         for i in range(0,len(columnValues)):
             tests(columnValues[i], df[j])
             regression(columnValues[i], df[j])
-    #plt.show()
 
 if __name__ == '__main__':
     main()
